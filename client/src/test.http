@@ -1,0 +1,6 @@
+POST http://127.0.0.1:5000/predict/stroke
+Content-Type: application/json
+
+{
+  "features": [67,1,1,228.69,36.6]
+}

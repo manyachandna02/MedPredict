@@ -1,0 +1,328 @@
+/* AuthPage.module.css */
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.left {
+  background: var(--navy-900);
+  padding: var(--space-16) var(--space-12);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.left::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(20,196,178,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.left::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  left: -60px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.leftLogo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.leftLogoIcon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--teal-500), var(--blue-500));
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.leftContent {
+  position: relative;
+  z-index: 1;
+}
+
+.leftTitle {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin-bottom: var(--space-4);
+}
+
+.leftTitleAccent {
+  background: linear-gradient(135deg, var(--teal-400), var(--blue-400));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.leftDesc {
+  font-size: 0.95rem;
+  color: var(--slate-400);
+  line-height: 1.7;
+  margin-bottom: var(--space-10);
+  max-width: 380px;
+}
+
+.leftFeatures {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.leftFeature {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--slate-300);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.leftFeatureIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--teal-400);
+}
+
+.leftFooter {
+  font-size: 0.8rem;
+  color: var(--slate-600);
+}
+
+.right {
+  background: var(--slate-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-10);
+}
+
+.formCard {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-10);
+  border: 1px solid var(--slate-200);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 420px;
+  animation: fadeUp 0.5s ease both;
+}
+
+.formHeader {
+  margin-bottom: var(--space-8);
+}
+
+.formTitle {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--navy-900);
+  letter-spacing: -0.025em;
+  margin-bottom: var(--space-1);
+}
+
+.formSubtitle {
+  font-size: 0.9rem;
+  color: var(--slate-500);
+}
+
+.tabRow {
+  display: flex;
+  background: var(--slate-100);
+  border-radius: var(--radius-md);
+  padding: 4px;
+  margin-bottom: var(--space-6);
+}
+
+.tab {
+  flex: 1;
+  padding: var(--space-2) var(--space-4);
+  border-radius: calc(var(--radius-md) - 2px);
+  font-size: 0.87rem;
+  font-weight: 600;
+  color: var(--slate-500);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.tab.active {
+  background: var(--white);
+  color: var(--navy-900);
+  box-shadow: var(--shadow-sm);
+}
+
+.formGroup {
+  margin-bottom: var(--space-4);
+}
+
+.formLabel {
+  display: block;
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--slate-700);
+  margin-bottom: var(--space-2);
+}
+
+.formInput {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid var(--slate-200);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  color: var(--navy-900);
+  background: var(--white);
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.formInput:focus {
+  border-color: var(--teal-500);
+  box-shadow: 0 0 0 3px rgba(13,168,152,0.12);
+}
+
+.formInput.error {
+  border-color: var(--risk-high);
+}
+
+.formInput::placeholder {
+  color: var(--slate-400);
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--slate-400);
+  pointer-events: none;
+}
+
+.inputWrapper .formInput {
+  padding-left: 40px;
+}
+
+.passwordToggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--slate-400);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 0;
+  transition: color var(--transition-fast);
+}
+
+.passwordToggle:hover {
+  color: var(--slate-600);
+}
+
+.errorMsg {
+  font-size: 0.78rem;
+  color: var(--risk-high);
+  margin-top: var(--space-1);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.forgotLink {
+  font-size: 0.82rem;
+  color: var(--teal-600);
+  font-weight: 500;
+  float: right;
+  margin-top: -2px;
+  transition: color var(--transition-fast);
+}
+
+.forgotLink:hover { color: var(--teal-500); }
+
+.submitBtn {
+  width: 100%;
+  margin-top: var(--space-6);
+}
+
+.divider {
+  text-align: center;
+  position: relative;
+  margin: var(--space-6) 0;
+  font-size: 0.82rem;
+  color: var(--slate-400);
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--slate-200);
+  z-index: 0;
+}
+
+.divider span {
+  background: var(--white);
+  padding: 0 var(--space-3);
+  position: relative;
+  z-index: 1;
+}
+
+.switchText {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--slate-500);
+}
+
+.switchLink {
+  color: var(--teal-600);
+  font-weight: 600;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.switchLink:hover { color: var(--teal-500); }
+
+@media (max-width: 768px) {
+  .page { grid-template-columns: 1fr; }
+  .left { display: none; }
+  .right { padding: var(--space-6); min-height: 100vh; }
+}
