@@ -23,16 +23,10 @@ const allowedOrigins = (process.env.ALLOWED_ORIGINS || '')
   .filter(Boolean);
 
 app.use(cors({
-  origin: (origin, cb) => {
-    // Allow non-browser requests (curl, Postman) and listed origins
-    if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
-    cb(new Error(`CORS policy: origin "${origin}" not allowed`));
-  },
-  methods:          ['GET', 'POST', 'DELETE', 'OPTIONS'],
-  allowedHeaders:   ['Content-Type', 'Authorization'],
-  exposedHeaders:   ['X-Request-Id'],
-  credentials:      true,
-  optionsSuccessStatus: 204,
+  origin: ['http://localhost:5173', 'http://localhost:5174'],
+  methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 }));
 
 // ── Body parsing ──────────────────────────────────────────────────────────────

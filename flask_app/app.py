@@ -3,7 +3,6 @@
 # Flask ML microservice — serves predictions from .pkl scikit-learn models.
 # Node.js backend calls POST /predict/<disease> with { "features": [...] }
 # ─────────────────────────────────────────────────────────────────────────────
-
 import os
 import time
 import logging
@@ -113,3 +112,4 @@ def predict(disease):
 # ── Run app ─────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=5000, debug=False)
+
