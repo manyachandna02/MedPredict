@@ -57,38 +57,25 @@ const callFlaskPredict = async (disease, features) => {
       latencyMs,
     };
   } catch (err) {
-    // Re-throw AppErrors as-is
-    if (err.isOperational) throw err;
+  console.log("=========== FLASK ERROR ===========");
+  console.log("Status:", err.response?.status);
+  console.log("Data:", err.response?.data);
+  console.log("Message:", err.message);
+  console.log("===================================");
 
-    // Flask unreachable
-    if (err.isFlaskDown) {
-      throw new AppError(
-        'ML prediction service is currently unavailable. Please try again shortly.',
-        503,
-        'FLASK_DOWN',
-      );
-    }
+  // Re-throw AppErrors as-is
+  if (err.isOperational) throw err;
 
-    // Flask timed out
-    if (err.isFlaskTimeout) {
-      throw new AppError(
-        'ML prediction service timed out. Please try again.',
-        504,
-        'FLASK_TIMEOUT',
-      );
-    }
-
-    // Flask returned 4xx/5xx
-    if (err.response) {
-      const status  = err.response.status;
-      const message = err.response.data?.error || err.response.data?.message || 'ML service error';
-      throw new AppError(`Flask error (${status}): ${message}`, 502, 'FLASK_ERROR');
-    }
-
-    // Unknown
-    logger.error('Unexpected error calling Flask', { message: err.message });
-    throw new AppError('Unexpected error communicating with ML service', 500, 'INTERNAL_ERROR');
+  // Flask unreachable
+  if (err.isFlaskDown) {
+    throw new AppError(
+      "ML prediction service is currently unavailable. Please try again shortly.",
+      503,
+      "FLASK_DOWN"
+    );
   }
-};
+
+  throw err;
+}
 
 export default { callFlaskPredict };
