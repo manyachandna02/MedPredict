@@ -304,3 +304,19 @@
 {"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mMongoDB connected: ac-9rf7rpu-shard-00-01.7vdtiqm.mongodb.net\u001b[39m","timestamp":"19:14:04"}
 {"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mMedPredict API running on port 8000 [development]\u001b[39m","timestamp":"19:14:04"}
 {"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mHealth check → http://localhost:8000/health\u001b[39m","timestamp":"19:14:04"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mMongoDB connected: ac-9rf7rpu-shard-00-01.7vdtiqm.mongodb.net\u001b[39m","timestamp":"19:14:23"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mMedPredict API running on port 8000 [development]\u001b[39m","timestamp":"19:14:23"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mHealth check → http://localhost:8000/health\u001b[39m","timestamp":"19:14:23"}
+{"level":"\u001b[34mdebug\u001b[39m","message":"\u001b[34m→ Flask GET http://127.0.0.1:5000/health\u001b[39m","timestamp":"19:14:53"}
+{"level":"\u001b[34mdebug\u001b[39m","message":"\u001b[34m← Flask 200 /health\u001b[39m","timestamp":"19:14:53"}
+{"level":"\u001b[34mdebug\u001b[39m","message":"\u001b[34mHealth check — mongo: connected, flask: reachable\u001b[39m","timestamp":"19:14:53"}
+{"level":"\u001b[32mhttp\u001b[39m","message":"\u001b[32m\u001b[0mGET /health \u001b[32m200\u001b[0m 242.314 ms - 132\u001b[0m\u001b[39m","timestamp":"19:14:53"}
+{"level":"\u001b[33mwarn\u001b[39m","message":"\u001b[33mGET /favicon.ico → 404: Route not found: GET /favicon.ico\u001b[39m","timestamp":"19:14:54"}
+{"level":"\u001b[32mhttp\u001b[39m","message":"\u001b[32m\u001b[0mGET /favicon.ico \u001b[33m404\u001b[0m 2.135 ms - 1281\u001b[0m\u001b[39m","timestamp":"19:14:54"}
+{"level":"\u001b[34mdebug\u001b[39m","message":"\u001b[34m→ Flask POST http://127.0.0.1:5000/predict/stroke\u001b[39m","timestamp":"19:19:28"}
+{"level":"\u001b[34mdebug\u001b[39m","message":"\u001b[34m← Flask 200 /predict/stroke\u001b[39m","timestamp":"19:19:28"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mML prediction complete — disease: stroke, prediction: 1, risk: 0.8375, latency: 91ms\u001b[39m","timestamp":"19:19:28"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mPrediction saved — id: 6a3be0680407580eed1b1232, disease: stroke\u001b[39m","timestamp":"19:19:29"}
+{"level":"\u001b[32mhttp\u001b[39m","message":"\u001b[32m\u001b[0mPOST /api/stroke \u001b[32m201\u001b[0m 306.490 ms - 269\u001b[0m\u001b[39m","timestamp":"19:19:29"}
+{"level":"\u001b[33mwarn\u001b[39m","message":"\u001b[33mMongoDB disconnected — attempting reconnect…\u001b[39m","timestamp":"20:13:30"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32mMongoDB connected: ac-9rf7rpu-shard-00-02.7vdtiqm.mongodb.net\u001b[39m","timestamp":"20:13:31"}
