@@ -1,6 +1,7 @@
 {
   "name": "medpredict-backend",
   "version": "1.0.0",
+  "type": "module",
   "description": "MedPredict Node/Express backend — ML health prediction system",
   "main": "src/server.js",
   "scripts": {
