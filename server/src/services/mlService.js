@@ -77,5 +77,5 @@ const callFlaskPredict = async (disease, features) => {
 
   throw err;
 }
-
+};
 export default { callFlaskPredict };
