@@ -10,6 +10,9 @@ const flaskClient = axios.create({
     Accept: 'application/json',
   },
 });
+console.log("Flask Base URL:", process.env.FLASK_URL);
+
+export default flaskClient;
 // ── Request interceptor: log outgoing calls ───────────
 flaskClient.interceptors.request.use(
   (config) => {
