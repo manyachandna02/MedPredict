@@ -14,7 +14,7 @@ import logger           from './utils/logger.js';
 const app = express();
 
 // ── Security headers ──────────────────────────────────────────────────────────
-app.use(helmet());
+// app.use(helmet());
 
 // ── CORS ──────────────────────────────────────────────────────────────────────
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || '')
@@ -22,11 +22,15 @@ const allowedOrigins = (process.env.ALLOWED_ORIGINS || '')
   .map((o) => o.trim())
   .filter(Boolean);
 
+// app.use(cors({
+//   origin: ['http://localhost:5173', 'http://localhost:5174','https://med-predict-seven.vercel.app'],
+//   methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+//   credentials: true
+// }));
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:5174','https://med-predict-seven.vercel.app'],
-  methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
+  origin: true,
+  credentials: true,
 }));
 
 // ── Body parsing ──────────────────────────────────────────────────────────────
