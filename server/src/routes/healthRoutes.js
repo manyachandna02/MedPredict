@@ -13,27 +13,27 @@ router.get('/', async (_req, res) => {
   const mongoStatus = mongoState === 1 ? 'connected' : 'disconnected';
 
   let flaskStatus = 'unknown';
-  try {
-    await flaskClient.get('/health', { timeout: 2000 });
-    flaskStatus = 'reachable';
-  } catch {
-    flaskStatus = 'unreachable';
-  }
+    try {
+      await flaskClient.get('/health', { timeout: 2000 });
+      flaskStatus = 'reachable';
+    } catch {
+      flaskStatus = 'unreachable';
+    }
 
-  const healthy  = mongoState === 1 && flaskStatus === 'reachable';
-  const httpCode = healthy ? 200 : 503;
+    const healthy  = mongoState === 1 && flaskStatus === 'reachable';
+    const httpCode = healthy ? 200 : 503;
 
-  logger.debug(`Health check — mongo: ${mongoStatus}, flask: ${flaskStatus}`);
+    logger.debug(`Health check — mongo: ${mongoStatus}, flask: ${flaskStatus}`);
 
-  res.status(httpCode).json({
-    status:    healthy ? 'healthy' : 'degraded',
-    timestamp: new Date().toISOString(),
-    services: {
-      mongo: mongoStatus,
-      flask: flaskStatus,
-    },
-    uptime: process.uptime(),
+    res.status(httpCode).json({
+      status:    healthy ? 'healthy' : 'degraded',
+      timestamp: new Date().toISOString(),
+      services: {
+        mongo: mongoStatus,
+        flask: flaskStatus,
+      },
+      uptime: process.uptime(),
+    });
   });
-});
 
-export default router;
+  export default router;
