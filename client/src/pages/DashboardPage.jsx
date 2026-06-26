@@ -131,10 +131,12 @@ const DashboardPage = ({ user, onLogout }) => {
 
       console.log('Features sent to backend:', features);
 
-      const res = await axios.post(
-        `http://localhost:8000/api/${activeDisease}`,
-        { features },
-      );
+      const API_URL = import.meta.env.VITE_API_URL;
+
+const res = await axios.post(
+  `${API_URL}/api/${activeDisease}`,
+  { features },
+);
 
       console.log('Backend response:', res.data);
 
