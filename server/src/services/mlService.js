@@ -43,7 +43,7 @@ const callFlaskPredict = async (disease, features) => {
   const t0 = Date.now();
 
   try {
-    const response = await postWithRetry(`/predict/${disease}`, { features });
+    const response = await postWithRetry(`/predict/${disease}`, { features },3,10000);
     const latencyMs = Date.now() - t0;
 
     const { prediction, probability } = response.data;
