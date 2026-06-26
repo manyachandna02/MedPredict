@@ -4,7 +4,7 @@ import logger from '../utils/logger.js';
 
 const flaskClient = axios.create({
   baseURL: process.env.FLASK_URL || 'http://127.0.0.1:5000',
-  timeout: Number(process.env.FLASK_TIMEOUT_MS) || 10000,
+  timeout: Number(process.env.FLASK_TIMEOUT_MS) || 60000,
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',

@@ -17,6 +17,20 @@ const SUPPORTED_DISEASES = new Set(['stroke', 'diabetes', 'heart']);
  * @param {number[]} features - ordered numeric feature array
  * @returns {{ prediction: number, risk: number, latencyMs: number }}
  */
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const postWithRetry = async (path, body, retries = 1, delayMs = 5000) => {
+  try {
+    return await flaskClient.post(path, body);
+  } catch (err) {
+    if (retries > 0) {
+      logger.warn(`Flask call failed, retrying in ${delayMs}ms... (${retries} retr${retries > 1 ? 'ies' : 'y'} left)`);
+      await sleep(delayMs);
+      return postWithRetry(path, body, retries - 1, delayMs);
+    }
+    throw err;
+  }
+};
 const callFlaskPredict = async (disease, features) => {
   if (!SUPPORTED_DISEASES.has(disease)) {
     throw new AppError(`Unsupported disease type: "${disease}"`, 400, 'INVALID_DISEASE');
@@ -29,7 +43,7 @@ const callFlaskPredict = async (disease, features) => {
   const t0 = Date.now();
 
   try {
-    const response = await flaskClient.post(`/predict/${disease}`, { features });
+    const response = await postWithRetry(`/predict/${disease}`, { features });
     const latencyMs = Date.now() - t0;
 
     const { prediction, probability } = response.data;
