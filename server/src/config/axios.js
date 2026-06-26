@@ -28,17 +28,22 @@ flaskClient.interceptors.response.use(
     return response;
   },
   (error) => {
-    if (error.code === 'ECONNREFUSED') {
-      logger.error('Flask ML service is unreachable (ECONNREFUSED)');
-      error.isFlaskDown = true;
-    } else if (error.code === 'ECONNABORTED') {
-      logger.error('Flask ML service request timed out');
-      error.isFlaskTimeout = true;
-    } else {
-      logger.error(`Flask error: ${error.response?.status} — ${error.message}`);
-    }
-    return Promise.reject(error);
-  },
-);
+  console.error("========== FLASK ERROR ==========");
+  console.error("Base URL:", flaskClient.defaults.baseURL);
+  console.error("Request URL:", error.config?.url);
+  console.error("Method:", error.config?.method);
+  console.error("Status:", error.response?.status);
+  console.error("Response Body:", error.response?.data);
+  console.error("Message:", error.message);
+  console.error("================================");
 
-export default flaskClient;
+  if (error.code === 'ECONNREFUSED') {
+    logger.error('Flask ML service is unreachable (ECONNREFUSED)');
+    error.isFlaskDown = true;
+  } else if (error.code === 'ECONNABORTED') {
+    logger.error('Flask ML service request timed out');
+    error.isFlaskTimeout = true;
+  }
+
+  return Promise.reject(error);
+},
